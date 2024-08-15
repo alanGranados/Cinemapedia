@@ -28,10 +28,12 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
   void initState() {
     super.initState();
 
-    scrollController.addListener( () {
+    scrollController.addListener(
+      () {
         if (widget.loadNextPage == null) return;
 
-        if( scrollController.position.pixels + 200 >= scrollController.position.maxScrollExtent ){
+        if (scrollController.position.pixels + 200 >=
+            scrollController.position.maxScrollExtent) {
           widget.loadNextPage!();
         }
       },
@@ -59,7 +61,7 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) =>
-                      _Slide(movie: widget.movies[index]))),
+                      FadeInRight(child: _Slide(movie: widget.movies[index])))),
         ],
       ),
     );
@@ -129,9 +131,13 @@ class _Slide extends StatelessWidget {
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 2, right: 10),
-                  child: Text(HumanFormats.number(movie.popularity),
-                      style: textTheme.bodySmall),
+                  padding: const EdgeInsets.only(top: 2, right: 10,),
+                  child: Row(children: [
+                    const Icon(Icons.thumb_up_off_alt_rounded, color: Colors.blue, size: 20,),
+                    const SizedBox(width: 4,),
+                    Text(HumanFormats.number(movie.popularity),
+                        style: textTheme.bodySmall),
+                  ]),
                 )
               ],
             ),

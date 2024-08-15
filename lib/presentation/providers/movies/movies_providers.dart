@@ -10,6 +10,13 @@ final StateNotifierProvider<MoviesNotifier, List<Movie>>
     popularMoviesProvider = StateNotifierProvider((ref) => MoviesNotifier(
         fecthMoreMoives: ref.watch(movieRepositoryProvider).getPopular));
 
+final StateNotifierProvider<MoviesNotifier, List<Movie>>
+    topRatedMoviesProvider = StateNotifierProvider((ref) => MoviesNotifier(
+        fecthMoreMoives: ref.watch(movieRepositoryProvider).getTopRated));
+
+final StateNotifierProvider<MoviesNotifier, List<Movie>>
+    upComingMoviesProvider = StateNotifierProvider((ref) => MoviesNotifier(
+        fecthMoreMoives: ref.watch(movieRepositoryProvider).getUpcoming));
 
 
 typedef MovieCallback = Future<List<Movie>> Function({int page});
