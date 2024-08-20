@@ -1,5 +1,5 @@
 import 'package:cinemapedia/domain/datasources/movies_datasource.dart';
-import 'package:cinemapedia/domain/entities/movier.dart';
+import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/domain/repositories/movies_repository.dart';
 
 class MovieRepositoryImpl implements MoviesRepository {
@@ -25,5 +25,10 @@ class MovieRepositoryImpl implements MoviesRepository {
   @override
   Future<List<Movie>> getUpcoming({int page = 1}) {
     return moviesDatasource.getUpcoming(page: page);
+  }
+  
+  @override
+  Future<Movie> getMovieById(String movieId) {
+    return moviesDatasource.getMovieById(movieId);
   }
 }
