@@ -99,7 +99,7 @@ class _Slide extends StatelessWidget {
                                     child: CircularProgressIndicator(
                                         strokeWidth: 2)))
                             : GestureDetector(
-                              onTap: () => context.push('/movie/${movie.id}'),
+                              onTap: () => context.push('/home/0/movie/${movie.id}'),
                               child: FadeIn(child: child)
                             )),
               )),
@@ -128,7 +128,7 @@ class _Slide extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 2),
                   child: Text(
-                    '${movie.voteAverage}',
+                    HumanFormats.number(movie.voteAverage, 2),
                     style: textTheme.bodyMedium!
                         .copyWith(color: Colors.yellow.shade800),
                   ),
@@ -139,7 +139,7 @@ class _Slide extends StatelessWidget {
                   child: Row(children: [
                     const Icon(Icons.thumb_up_off_alt_rounded, color: Colors.blue, size: 20,),
                     const SizedBox(width: 4,),
-                    Text(HumanFormats.number(movie.popularity),
+                    Text(HumanFormats.number(movie.popularity,3),
                         style: textTheme.bodySmall),
                   ]),
                 )
