@@ -220,6 +220,7 @@ class _ActorsByMovie extends ConsumerWidget {
     return SizedBox(
       height: 300,
       child: ListView.builder(
+        itemCount: actorsByMovie[movieId]?.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => Container(
                 padding: const EdgeInsets.all(8),
