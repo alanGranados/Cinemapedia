@@ -13,8 +13,8 @@ class CustomAppbar extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     // final movieRepository = ref.read( movieRepositoryProvider );
-    final String searchQuery = ref.watch( searchQueryProvider );
-    final searchedMovies = ref.watch( searchedMoviesProvier );
+    final String searchQuery = ref.watch(searchQueryProvider);
+    final searchedMovies = ref.watch(searchedMoviesProvier);
 
     return SafeArea(
       child: Padding(
@@ -31,26 +31,26 @@ class CustomAppbar extends ConsumerWidget {
                 'Cinemapedia',
                 style: textTheme.titleMedium,
               ),
-
               const Spacer(),
-
-              IconButton(onPressed: 
-              () => showSearch<Movie?>(
-                query: searchQuery,
-                context: context,
-                delegate: SearchMovieDelegate(
-                  searchMovies: ref.read( searchedMoviesProvier.notifier ).searchedMoviesByQuery,
-                  initialMovies: searchedMovies
-                  // ( query ) {
-                    // ref.read( searchQueryProvider.notifier ).update( (state) => query, );
-                    // return movieRepository.searchMovies(query);
-                  // } 
-                )
-              ).then((movie) => movie != null 
-                ? context.push('/movie/${ movie.id }')
-                : null
-              ), 
-              icon: const Icon(Icons.search)),
+              IconButton(
+                  onPressed: () => showSearch<Movie?>(
+                              query: searchQuery,
+                              context: context,
+                              delegate: SearchMovieDelegate(
+                                  searchMovies: ref
+                                      .read(searchedMoviesProvier.notifier)
+                                      .searchedMoviesByQuery,
+                                  initialMovies: searchedMovies
+                                  // ( query ) {
+                                  // ref.read( searchQueryProvider.notifier ).update( (state) => query, );
+                                  // return movieRepository.searchMovies(query);
+                                  // }
+                                  ))
+                          .then((movie) {
+                        if (movie == null) return;
+                        context.push('/home/0/movie/${movie.id}');
+                      }),
+                  icon: const Icon(Icons.search)),
             ],
           ),
         ),

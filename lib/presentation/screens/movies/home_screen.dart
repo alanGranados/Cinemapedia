@@ -7,7 +7,6 @@ class HomeScreen extends StatelessWidget {
   final int pageIndex;
   const HomeScreen({super.key, required this.pageIndex});
 
-
   final viewRoutes = const <Widget>[
     HomeView(),
     CategoriesView(),
@@ -21,7 +20,9 @@ class HomeScreen extends StatelessWidget {
         index: pageIndex,
         children: viewRoutes,
       ),
-      bottomNavigationBar: CustomBottomNavigation(currentIndex: pageIndex,),
+      bottomNavigationBar: CustomBottomNavigation(
+        currentIndex: pageIndex,
+      ),
     );
   }
 }
